@@ -7,6 +7,7 @@ from pyspark.sql.types import StructType, StructField, StringType, IntegerType, 
 from datetime import datetime, timedelta
 import pyspark
 from pyspark.sql import SparkSession
+import os
 
 
 class TestDataGen:
@@ -28,8 +29,9 @@ class TestDataGen:
         return word
         
     def datagen(self,spark):
+        os.removedirs()
         for i in range(1,10):
-            data= [({"order_id":''.join(random.choice(string.ascii_letters) for i in range(8)),
+            i= [({"order_id":''.join(random.choice(string.ascii_letters) for i in range(8)),
                     "customer_order_id":''.join(random.choice(string.ascii_letters + string.digits) for i in range(12)),
                     "tracking_number":''.join(random.choice(string.digits) for i in range(10)),
                     "Part_name":f"{self.generate_name()}",
@@ -40,5 +42,5 @@ class TestDataGen:
                     "Phone":''.join(random.choice(string.digits) for i in range(10)),
                     "Email":random.choice(f"{''.join(random.choices(string.ascii_letters + string.digits, k=8))}@example.com"),
                     "Pincode":''.join(random.choices(string.ascii_uppercase + string.digits, k=3)) + ' ' + ''.join(random.choices(string.digits + string.ascii_uppercase, k=3))})]
-        df = spark.createDataFrame(data)
+        df = spark.createDataFrame(i)
         df.write.mode("append").format("delta").saveAsTable("test_table5")
