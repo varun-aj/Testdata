@@ -31,7 +31,7 @@ class TestDataGen:
     def datagen(self,spark):
         os.removedirs()
         for i in range(1,10):
-            i= [({"order_id":''.join(random.choice(string.ascii_letters) for i in range(8)),
+            '''i= [({"order_id":''.join(random.choice(string.ascii_letters) for i in range(8)),
                     "customer_order_id":''.join(random.choice(string.ascii_letters + string.digits) for i in range(12)),
                     "tracking_number":''.join(random.choice(string.digits) for i in range(10)),
                     "Part_name":f"{self.generate_name()}",
@@ -41,6 +41,18 @@ class TestDataGen:
                     "Delivery_Date":datetime(2022, 1, 1) + timedelta(days=random.randint(0, (datetime(2024, 12, 31) - datetime(2022, 1, 1)).days)), 
                     "Phone":''.join(random.choice(string.digits) for i in range(10)),
                     "Email":random.choice(f"{''.join(random.choices(string.ascii_letters + string.digits, k=8))}@example.com"),
-                    "Pincode":''.join(random.choices(string.ascii_uppercase + string.digits, k=3)) + ' ' + ''.join(random.choices(string.digits + string.ascii_uppercase, k=3))})]
-        df = spark.createDataFrame(i)
+                    "Pincode":''.join(random.choices(string.ascii_uppercase + string.digits, k=3)) + ' ' + ''.join(random.choices(string.digits + string.ascii_uppercase, k=3))})]'''
+            
+            data= [({"order_id":random.choice(["code","kate"]),
+                "customer_order_id":random.choice(["code","kate"]),
+                "tracking_number":random.choice(["code","kate"]),
+                "Part_name":generate_name(),
+                "Quantity":random.choice(["code","kate"]),
+                "cost":random.choice(["code","kate"]),
+                "Pack_Date":random.choice(["code","kate"]),
+                "Delivery_Date":random.choice(["code","kate"]), 
+                "Phone":random.choice(["code","kate"]),
+                "Email":random.choice(["code","kate"]),
+                "Pincode":random.choice(["code","kate"])})]
+        df = spark.createDataFrame(data)
         df.write.mode("append").format("delta").saveAsTable("test_table5")
