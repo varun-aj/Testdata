@@ -29,7 +29,7 @@ class TestDataGen:
         return word
         
     def datagen(self,spark):
-        os.removedirs()
+        
         for i in range(1,10):
             '''i= [({"order_id":''.join(random.choice(string.ascii_letters) for i in range(8)),
                     "customer_order_id":''.join(random.choice(string.ascii_letters + string.digits) for i in range(12)),
@@ -54,5 +54,5 @@ class TestDataGen:
                 "Phone":random.choice(["code","kate"]),
                 "Email":random.choice(["code","king"]),
                 "Pincode":random.choice(["code","kate"])})]
-        df = spark.createDataFrame(data)
-        df.write.mode("append").format("delta").saveAsTable("test_table5")
+            df = spark.createDataFrame(data)
+            df.write.mode("append").format("delta").saveAsTable("test_table5")
