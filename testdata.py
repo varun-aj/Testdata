@@ -50,7 +50,7 @@ class TestDataGen:
                 "Quantity":random.choice(["code","kate"]),
                 "cost":random.choice(["code","kate"]),
                 "Pack_Date":random.choice(["code","kate"]),
-                "Delivery_Date":random.choice(["code","kate"]), s
+                "Delivery_Date":random.choice(["code","kate"]), 
                 "Phone":random.choice(["code","kate"]),
                 "Email":random.choice(["code","king"]),
                 "Pincode":random.choice(["code","kate"])})]
