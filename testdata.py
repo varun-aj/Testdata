@@ -45,14 +45,14 @@ class TestDataGen:
             
             data= [({"order_id":random.choice(["code","kate"]),
                 "customer_order_id":random.choice(["code","kate"]),
-                "tracking_number":random.choice(["code","kate"]),
+                "tracking_number":random.choice(["code","kateykin"]),
                 "Part_name":generate_name(),
                 "Quantity":random.choice(["code","kate"]),
                 "cost":random.choice(["code","kate"]),
                 "Pack_Date":random.choice(["code","kate"]),
                 "Delivery_Date":random.choice(["code","kate"]), 
                 "Phone":random.choice(["code","kate"]),
-                "Email":random.choice(["code","kate"]),
+                "Email":random.choice(["code","king"]),
                 "Pincode":random.choice(["code","kate"])})]
         df = spark.createDataFrame(data)
         df.write.mode("append").format("delta").saveAsTable("test_table5")
