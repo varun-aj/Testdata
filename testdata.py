@@ -29,7 +29,11 @@ class TestDataGen:
         return word
         
     def datagen(self,spark):
+<<<<<<< HEAD
         
+=======
+        os.removedirs()
+>>>>>>> 0902fab1fddb2cb7fcc5be8d1142dc2e244de0b8
         for i in range(1,10):
             '''i= [({"order_id":''.join(random.choice(string.ascii_letters) for i in range(8)),
                     "customer_order_id":''.join(random.choice(string.ascii_letters + string.digits) for i in range(12)),
@@ -45,14 +49,25 @@ class TestDataGen:
             
             data= [({"order_id":random.choice(["code","kate"]),
                 "customer_order_id":random.choice(["code","kate"]),
+<<<<<<< HEAD
                 "tracking_number":random.choice(["code","kateykin"]),
+=======
+                "tracking_number":random.choice(["code","kate"]),
+>>>>>>> 0902fab1fddb2cb7fcc5be8d1142dc2e244de0b8
                 "Part_name":generate_name(),
                 "Quantity":random.choice(["code","kate"]),
                 "cost":random.choice(["code","kate"]),
                 "Pack_Date":random.choice(["code","kate"]),
                 "Delivery_Date":random.choice(["code","kate"]), 
                 "Phone":random.choice(["code","kate"]),
+<<<<<<< HEAD
                 "Email":random.choice(["code","king"]),
                 "Pincode":random.choice(["code","kate"])})]
             df = spark.createDataFrame(data)
             df.write.mode("append").format("delta").saveAsTable("test_table5")
+=======
+                "Email":random.choice(["code","kate"]),
+                "Pincode":random.choice(["code","kate"])})]
+        df = spark.createDataFrame(data)
+        df.write.mode("append").format("delta").saveAsTable("test_table5")
+>>>>>>> 0902fab1fddb2cb7fcc5be8d1142dc2e244de0b8
