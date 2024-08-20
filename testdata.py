@@ -45,4 +45,4 @@ class TestDataGen:
             
  
             df = spark.createDataFrame(data)
-            df.write.mode("append").format("delta").option("overwriteSchema", "true").saveAsTable("test_table5")
+            df.write.mode("append").format("delta").option("overwriteSchema", "true").save("test_table5")
