@@ -31,28 +31,18 @@ class TestDataGen:
     def datagen(self,spark):
         
         for i in range(1,100):
-            data=[({"order_id":''.join(random.choice(string.ascii_letters) for i in range(8)),
-                    "customer_order_id":''.join(random.choice(string.ascii_letters + string.digits) for i in range(12)),
-                    "tracking_number":''.join(random.choice(string.digits) for i in range(10)),
-                    "Part_name":f"{self.generate_name()}",
-                    "Quantity":random.randint(1,20),
-                    "cost":random.randint(1,999),
-                    "Pack_Date":datetime(2022, 1, 1) + timedelta(days=random.randint(0, (datetime(2024, 12, 31) - datetime(2022, 1, 1)).days)),
-                    "Delivery_Date":datetime(2022, 1, 1) + timedelta(days=random.randint(0, (datetime(2024, 12, 31) - datetime(2022, 1, 1)).days)), 
-                    "Phone":''.join(random.choice(string.digits) for i in range(10)),
-                    "Email":random.choice(f"{''.join(random.choices(string.ascii_letters + string.digits, k=8))}@example.com"),
-                    "Pincode":''.join(random.choices(string.ascii_uppercase + string.digits, k=3)) + ' ' + ''.join(random.choices(string.digits + string.ascii_uppercase, k=3))})]
-            
-            '''i= [({"order_id":random.choice(["code","kate"]),
-                "customer_order_id":random.choice(["code","kate"]),
-                "tracking_number":random.choice(["code","kateykin"]),
+            data= [({"order_id":''.join(random.choice(string.ascii_letters) for i in range(8)),
+                "customer_order_id":''.join(random.choice(string.ascii_letters + string.digits) for i in range(12)),
+                "tracking_number":''.join(random.choice(string.digits) for i in range(10)),
                 "Part_name":f"{self.generate_name()}",
-                "Quantity":random.choice(["code","kate"]),
-                "cost":random.choice(["code","kate"]),
-                "Pack_Date":random.choice(["code","kate"]),
-                "Delivery_Date":random.choice(["code","kate"]), 
-                "Phone":random.choice(["code","kate"]),
-                "Email":random.choice(["code","king"]),
-                "Pincode":random.choice(["code","kate"])})]'''
+                "Quantity":random.randint(1,20),
+                "cost":random.randint(1,999),
+                "Pack_Date":datetime(2022, 1, 1) + timedelta(days=random.randint(0, (datetime(2024, 12, 31) - datetime(2022, 1, 1)).days)),
+                "Delivery_Date":datetime(2022, 1, 1) + timedelta(days=random.randint(0, (datetime(2024, 12, 31) - datetime(2022, 1, 1)).days)), 
+                "Phone":''.join(random.choice(string.digits) for i in range(10)),
+                "Email":random.choice(f"{''.join(random.choices(string.ascii_letters + string.digits, k=8))}@example.com"),
+                "Pincode":''.join(random.choices(string.ascii_uppercase + string.digits, k=3)) + ' ' + ''.join(random.choices(string.digits + string.ascii_uppercase, k=3))})]
+            
+ 
             df = spark.createDataFrame(data)
-            df.write.mode("append").format("delta").saveAsTable("test_table5")
+            df.write.mode("append").format("delta").option("overwriteSchema", "true").saveAsTable("test_table5")
