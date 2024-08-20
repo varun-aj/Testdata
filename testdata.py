@@ -37,10 +37,10 @@ class TestDataGen:
                 "Part_name":f"{self.generate_name()}",
                 "Quantity":random.randint(1,20),
                 "cost":random.randint(1,999),
-                "Pack_Date":datetime(2022, 1, 1) + timedelta(days=random.randint(0, (datetime(2024, 12, 31) - datetime(2022, 1, 1)).days)),
-                "Delivery_Date":datetime(2022, 1, 1) + timedelta(days=random.randint(0, (datetime(2024, 12, 31) - datetime(2022, 1, 1)).days)), 
+                "Pack_Date":datetime(2022, 1, 1) + timedelta(days=random.randint(0, (datetime(2024, 12, 31) - datetime(2022, 1, 1)).days)).date(),
+                "Delivery_Date":datetime(2022, 1, 1) + timedelta(days=random.randint(0, (datetime(2024, 12, 31) - datetime(2022, 1, 1)).days)).date(), 
                 "Phone":''.join(random.choice(string.digits) for i in range(10)),
-                "Email":random.choice(f"{''.join(random.choices(string.ascii_letters + string.digits, k=8))}@example.com"),
+                "Email": f"{''.join(random.choices(string.ascii_letters + string.digits, k=8))}@example.com",
                 "Pincode":''.join(random.choices(string.ascii_uppercase + string.digits, k=3)) + ' ' + ''.join(random.choices(string.digits + string.ascii_uppercase, k=3))})]
             
  
