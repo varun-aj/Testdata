@@ -30,7 +30,7 @@ class TestDataGen:
         
     def datagen(self,spark):
         
-        for i in range(1,10):
+        for i in range(1,100):
             '''i= [({"order_id":''.join(random.choice(string.ascii_letters) for i in range(8)),
                     "customer_order_id":''.join(random.choice(string.ascii_letters + string.digits) for i in range(12)),
                     "tracking_number":''.join(random.choice(string.digits) for i in range(10)),
